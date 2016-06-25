@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社--http://www.zhinengshe.com</title>
+    <script>
+    	function getEle(str) {
+    		var arr = str.replace(/^\s+|\s+$/g, '').split(/\s+/);
+    		var aParent = [document];
+    		var aChild = [];
+
+    		for(var i = 0; i < arr.length; i++) {
+    			aChild = getByStr(aParent, arr[i]);
+    			aParent = aChild;
+    		}
+    		return aChild;
+    	}
+
+    	function getByClass(oParent, sClass) {
+    		if(oParent.getElementsByClassName) {
+    			return oParent.getElementsByClassName(sClass);
+    		}else {
+    			var arr = [];
+    			var aEle = oParent.getElementsByTagName('*');
+    			var reg = new RegExp('\\b' + sClass + '\\b');
+
+    			for(var i = 0; i < aEle.length; i++) {
+    				if(reg.test(aEle.className)) {
+    					arr.push(aEle[i]);
+    				}
+    			}
+    			return arr;
+    		}
+    	}
+
+    	function getByStr(aParent, str) {
+    		var aChild = [];
+    		for(var i = 0; i < aParent.length; i++) {
+    			switch(str.charAt(0)) {
+    				case '#':
+    					var aEle = document.getElementById(str.substring(1));
+    					aChild.push(aEle);
+    					break;
+    				case '.':
+    					var aEle = getByClass(aParent[i], str.substring(1));
+    					for(var j = 0; j < aEle.length; j++) {
+    						aChild.push(aEle);
+    					}
+    					break;
+    				default:
+    					if(/^\w+\.\w+$/.test(str)) { // li.red
+    						var aStr = str.split('.');
+    						var aEle = aParent[i].getElementsByTagName(aStr[0]);
+    						var reg = new RegExp('\\b' + aStr[1] + '\\b');
+    						for(var j = 0; j < aEle.length; j++) {
+    							if(reg.test(aEle[j].className)) {
+    								aChild.push(aEle[j]);
+    							}
+    						}
+    						// li:first li:eq(1)
+    					}else if(/^\w+:\w+(\(\d+\))?$/.test(str)) {
+    						var aStr = str.split(/:|\(|\)/);
+    						var aEle = aParent[i].getElementsByTagName(aStr[0]);
+
+    						switch(aStr[1]) {
+    							case 'first':
+    								aChild.push(aEle[0]);
+    								break;
+    							case 'last':
+    								aChild.push(aEle[aEle.length-1]);
+    								break;
+    							case 'eq':
+    								aChid.push(aEle[aStr[2]]);
+    								break;
+    							case 'odd':
+    								for(var j = 1; j < aEle.length; j += 2) {
+    									aChild.push(aEle[j]);
+    								}
+    								break;
+    							case 'even':
+    								for(var j = 0; j < aEle.length; j += 2) {
+    									aChild.push(aEle[j]);
+    								}
+    								break;
+    							case 'gt':
+    								for(var j = aStr[2]; j < aEle.length; j ++) {
+    									aChild.push(aEle[j]);
+    								}
+    								break;
+    							case 'lt':
+    								for(var j = 0; j < aStr[2]; j++) {
+    									aChild.push(aEle[j]);
+    								}
+    								break;
+    						// input[type=button]
+    						}else if(/^\w+\[\w+=\w+\]$/.test(str)) {
+    							var aStr = str.split(/\[|=|\]/);
+    							var aEle = aParent[i].getElementsByTagName(aStr[0]);
+
+    							for(var j = 0; j < aEle.length; j++) {
+    								if(aEle.getAttribute(aStr[1]) == aStr[2]) {
+    									aChild.push(aEle[j]);
+    								}
+    							}
+    						}else {
+    							var aEle = aParent[i].getElementsByTagName(str);
+
+    							for(var j = 0; j < aEle.length; j++) {
+    								aChild.push(aEle[j]);
+    							}	
+    						}
+    					} 
+    					break;
+    			}
+    			return aChild;
+    		}
+    	}
+
+    	window.onload = function() {
+    		var aLi = getEle('#div');
+    		alert(aLi);
+    	}
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <ul id="ul1">
+            <li class="red"><input type="text"></li>
+            <li class="red2"><input type="button" value="aaa"></li>
+            <li class="red blue"><input type="button" value="bbb"></li>
+            <li class="red3"><input type="button" value="ccc"></li>
+        </ul>
+        <ol>
+            <li class="red"><input type="text"></li>
+            <li class="red2"><input type="button" value="aaa"></li>
+            <li class="red blue"><input type="button" value="bbb"></li>
+            <li class="red3"><input type="button" value="ccc"></li>
+        </ol>
+    </div>
+</body>
+</html>
