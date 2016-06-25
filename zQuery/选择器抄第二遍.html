@@ -70,7 +70,7 @@
     								aChild.push(aEle[aEle.length-1]);
     								break;
     							case 'eq':
-    								aChid.push(aEle[aStr[2]]);
+    								aChild.push(aEle[aStr[2]]);
     								break;
     							case 'odd':
     								for(var j = 1; j < aEle.length; j += 2) {
@@ -92,33 +92,36 @@
     									aChild.push(aEle[j]);
     								}
     								break;
-    						// input[type=button]
-    						}else if(/^\w+\[\w+=\w+\]$/.test(str)) {
-    							var aStr = str.split(/\[|=|\]/);
-    							var aEle = aParent[i].getElementsByTagName(aStr[0]);
-
-    							for(var j = 0; j < aEle.length; j++) {
-    								if(aEle.getAttribute(aStr[1]) == aStr[2]) {
-    									aChild.push(aEle[j]);
-    								}
-    							}
-    						}else {
-    							var aEle = aParent[i].getElementsByTagName(str);
-
-    							for(var j = 0; j < aEle.length; j++) {
-    								aChild.push(aEle[j]);
-    							}	
     						}
-    					} 
-    					break;
+    						// input[type=button]
+						}else if(/^\w+\[\w+=\w+\]$/.test(str)) {
+							var aStr = str.split(/\[|=|\]/);
+							var aEle = aParent[i].getElementsByTagName(aStr[0]);
+
+							for(var j = 0; j < aEle.length; j++) {
+								if(aEle[j].getAttribute(aStr[1]) == aStr[2]) {
+									aChild.push(aEle[j]);
+								}
+							}
+						}else {
+							var aEle = aParent[i].getElementsByTagName(str);
+
+							for(var j = 0; j < aEle.length; j++) {
+								aChild.push(aEle[j]);
+							}	
+						}
+    					
+    				break;
     			}
     			return aChild;
     		}
     	}
 
     	window.onload = function() {
-    		var aLi = getEle('#div');
-    		alert(aLi);
+    		var aLi = getEle('#div1 input[type=button]');
+    		for(var i = 0; i < aLi.length; i++) {
+    			aLi[i].style.background = 'red';
+    		}
     	}
     </script>
 </head>
