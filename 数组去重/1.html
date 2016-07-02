@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	var arr = [1, 2, 123, 54123, 12, 32, 1, 1, 1, 232, 321];
+	var arr2 = [];
+	function findInArr (n, arr) {
+		for(var i = 0; i < arr.length; i++) {
+			if(n === arr[i]) {
+				return true;
+			}
+			
+		}
+		return false;
+	}
+
+	for(var i = 0; i < arr.length; i++) {
+		if(findInArr(arr[i], arr2) === false) {
+			arr2.push(arr[i]);
+		}
+	}
+	alert(arr2)
+</script>
+</body>
+</html>

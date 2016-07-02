@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	var arr=[1,1,1,1,1,1,2,2,2,3,3,3,2,2,2,4,4,54,5,5,66];
+
+	function findInArr(n, arr) {
+		for(var i = 0; i < arr.length; i++) {
+			if(n === arr[i]) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function removeDup(arr, s, e) {
+		if(s > e) {
+			return [];
+		}
+		if(s === e) {
+			return [arr[s]];
+		}
+
+		var c = Math.floor((s + e) / 2);
+		var l = removeDup(arr, s, c);
+		var r = removeDup(arr, c + 1, e);
+
+		for(var i = 0; i < r.length; i++) {
+			if(!findInArr(r[i], l)) {
+				l.push(r[i]);
+			}
+		}
+		return l;
+	}
+
+	alert(removeDup(arr, 0, arr.length - 1));
+</script>
+</body>
+</html>
