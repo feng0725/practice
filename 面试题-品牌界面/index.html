@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewprot" content="width=device-width,user-scalable=no,initial-scale=1.0,maimun-scale=1.0">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0">
+	<title>品牌界面</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+			font-size: 0.8rem;
+		}
+		body {
+			background: #eee;
+		}
+		.header {
+			width: 100%;
+			height: 1.95rem;
+			background: url(img/title.jpg);
+			background-size: 100%;
+		}
+		.search {
+			width: 15.5rem;
+			height: 1.51rem;
+			background: #fff;
+			margin: 7px auto;
+			border-radius: 5px;
+			position:relative;
+
+		}
+		.search input {
+			width: 13.5rem;
+			height:0.8rem;
+			border:none;
+			outline:none;
+			text-indent: 4.4rem;
+			border-right: 1px solid #ccc;
+			font-size:0.3rem;
+			margin-top:0.3rem;
+		}
+		.right {
+			width:1rem;
+			height:1rem;
+			background:url(img/right.jpg) no-repeat;
+			position:absolute;
+			right:0.5rem;
+			top: 0.25rem;
+
+		}
+		.abc {
+			height: 1rem;
+			background:#f2f2f2;
+			text-indent:1em;
+		}
+		.car {
+			height: 2.7rem;
+			line-height: 1rem;
+			background:#ffffff;
+			position:relative;
+			margin-bottom: 1px;
+		}
+		.car img {
+			float:left;
+		}
+		.car span {
+			float:left;
+			margin:0.8rem;
+		}
+		ul {
+			background:#fff;
+		}
+		.list {
+			width: 15.4rem;
+			height:1.5rem;
+			line-height: 1.5rem;
+			text-indent:1em;
+			border-bottom:1px dashed #ccc;
+			background:#fff;
+			margin-left: 0.3rem;
+			font-size:0.7rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header"></div>
+		<div class="search">
+			<input type="text" placeholder="请输入品牌名称/品牌拼音">
+			<span class="right"></span>
+		</div>
+	</header>
+	<section>
+	</section>
+<script src="js/base.js"></script>
+<script src="js/ajax_over.js"></script>
+<script>
+	var oSect = document.querySelector('section');
+
+	ajax({
+		url: 'data.json',
+		success: function(str) {
+			var json = eval('('+str+')')
+			console.log(json)
+			for(name in json) {
+				var oDiv = createDiv(name);
+				oDiv.className = 'abc'
+				oSect.appendChild(oDiv);
+				
+				for(var i = 0; i < json[name].length; i++) {
+					console.log(json[name][i]);
+					var oDiv1 = createDiv('');
+
+					oDiv1.innerHTML = '<img src="img/' + json[name][i].SMAKE_ICON +'" ><span> ' + json[name][i].SMAKE_NAME +'</span>'
+
+					// var oImg = createImg(json[name][i].SMAKE_ICON);
+					// oDiv1.appendChild(oImg);
+
+					oDiv1.className = 'car'
+					oSect.appendChild(oDiv1);
+					if(json[name][i].SERIESLIST) {
+						var SERIESLIST = json[name][i].SERIESLIST
+					}else {
+						var SERIESLIST = null;
+					}
+
+
+					(function(a) {
+						var ddd = true
+						oDiv1.onclick = function() {	
+							if(a && ddd) {
+								var oUl = document.createElement('ul');
+								for(var i = 0; i < a.length; i++) {
+									var oLi = document.createElement('li');
+									oLi.className = 'list'
+									oLi.innerHTML = a[i].SSERIALNAME
+									// console.log(a[i]);
+									oUl.appendChild(oLi);
+								}
+								oSect.insertBefore(oUl, this.nextElementSibling );
+							}else if(a) {
+								var oUl = document.querySelector('ul')
+								// alert(oSect)
+								oSect.removeChild(oUl);
+							}
+							ddd = !ddd;
+						}
+					})(SERIESLIST);
+
+				}
+			}
+		}
+	});
+
+	function createDiv(str) {
+		var oDiv = document.createElement('div');
+		oDiv.className = ''
+		oDiv.innerHTML = str;
+		return oDiv;
+	}
+
+
+	// function createImg(str) {
+	// 	var oImg = document.createElement('img');
+	// 	oImg.src = 'img/' + str;
+	// 	return oImg
+	// }
+
+</script>
+</body>
+</html>
