@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	var liList = document.querySelectorAll("li"); 
+	for(var i=0;i<liList.length;i++) {
+	 liList[i].onclick = outer(i); 
+	}  
+	function outer(x){
+	    function inner() {
+	        console.log(x);
+	        alert(x)
+	    }
+	    return inner; 
+	} 
+</script>
+</html>

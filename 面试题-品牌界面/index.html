@@ -118,34 +118,30 @@
 
 					oDiv1.className = 'car'
 					oSect.appendChild(oDiv1);
-					if(json[name][i].SERIESLIST) {
-						var SERIESLIST = json[name][i].SERIESLIST
-					}else {
-						var SERIESLIST = null;
-					}
 
 
-					(function(a) {
-						var ddd = true
+
+					(function(list) {
+						var bFlage = true
 						oDiv1.onclick = function() {	
-							if(a && ddd) {
+							if(list && bFlage) {
 								var oUl = document.createElement('ul');
-								for(var i = 0; i < a.length; i++) {
+								for(var i = 0; i < list.length; i++) {
 									var oLi = document.createElement('li');
 									oLi.className = 'list'
-									oLi.innerHTML = a[i].SSERIALNAME
+									oLi.innerHTML = list[i].SSERIALNAME
 									// console.log(a[i]);
 									oUl.appendChild(oLi);
 								}
 								oSect.insertBefore(oUl, this.nextElementSibling );
-							}else if(a) {
+							}else if(list) {
 								var oUl = document.querySelector('ul')
 								// alert(oSect)
 								oSect.removeChild(oUl);
 							}
-							ddd = !ddd;
+							bFlage = !bFlage;
 						}
-					})(SERIESLIST);
+					})(json[name][i].SERIESLIST);
 
 				}
 			}
