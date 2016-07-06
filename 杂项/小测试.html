@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script>
+    function findInArr(n,arr){
+        for(var i=0;i<arr.length;i++){
+            if(n==arr[i])return true;
+        }
+        return false;
+    }
+    window.onload=function(){
+        function foo(str){
+            var arr=str.split('');
+            var arr2=[];
+            var i=0;
+            while(i<6){
+                arr.sort(function(){
+                    return Math.random()-0.5;
+                });
+                var str2=arr.join('');
+                if(findInArr(str2,arr2)==false){
+                    arr2.push(str2);
+                    i++;
+                }
+                arr2.sort();
+            }
+            console.log(arr2);
+        }
+        foo('aabb');
+    }
+</script>
+

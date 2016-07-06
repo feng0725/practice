@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+</body>
+<script>
+	// 页面有文本框，需要限制该文本框中只能录入数字，即：如果用户按下数字以外的其他
+	// 键，文本框中无法录入；如果用户粘贴进非数字字符，也需要进行过滤。
+	// 请设计 HTML 代码以及 JS 代码，实现上述功能。
+	var oInput = document.querySelector('input');
+	oInput.onkeypress  = function(ev) {
+		if(!(ev.keyCode >= 48 && ev.keyCode <= 57)) {
+			return false;
+		}
+	}
+	oInput.onkeyup = function(ev) {
+		var str = oInput.value;
+		str = str.replace(/\D+/g, '');
+		oInput.value = str;
+	}
+</script>
+</html>

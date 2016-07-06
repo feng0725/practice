@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = '130726199109020032'
+	
+	
+	function code(id) {
+		if(id.length != 18 ) return false;
+		var arr = [7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2];
+		var arr2 = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+		var sum = 0;
+		for(var i = 0; i < id.length - 1; i++) {
+			sum += id.charAt(i) * arr[i];
+		}
+		sum %= 11
+		if(arr2[sum] == id.charAt(17)) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
+
+	alert(code(str));
+</script>
+</html>

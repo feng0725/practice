@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社--http://www.zhinengshe.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        // function getByLen(str, type){
+        //     var n=0;
+        //     for(var i=0; i<str.length; i++){
+        //         if(str.charCodeAt(i)>='0x4e00' && str.charCodeAt(i)<='0x9fa5'){
+        //             if(type=='utf8' || type=='utf-8'){
+        //                 n+=3;
+        //             }else{
+        //                 n+=2;
+        //             }
+        //         }else{
+        //             n+=1;
+        //         }
+        //     }
+        //     return n;
+        // }
+        // window.onload = function () {
+        //     var str='123哈哈哈哈abc';
+        //     alert(getByLen(str, 'utf8'));
+        // };
+
+    </script>
+</head>
+<body>
+
+</body>
+<script>
+    var a = '你号adfx'
+    var n = 0;
+    for(var i = 0; i < a.length; i++) {
+        for(var j = '0x4e00'; j < '0x9fa5'; j++) {
+            if(a.charCodeAt(i) == j) {
+                n++;
+            }
+        }
+    }
+    console.log(n)
+</script>
+</html>

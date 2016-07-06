@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function User(name) {
+		this.name = name;
+	}
+	User.prototype.introduce = function() {
+		alert(this.name);
+	}
+	var p = new User("mary");
+	alert(p.name); //弹出 mary
+	p.introduce(); //弹出 i am mary
+
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var n = 10;
+	function counter() {
+		var n = 0;
+		var g = function () {
+			return ++n;
+		};
+		return g;
+	}
+	var c1 = counter();
+	console.log(c1());
+	console.log(c1());
+	console.log(c1());
+
+</script>
+</html>

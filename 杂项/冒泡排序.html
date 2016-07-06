@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function bubbleSort(arr) {
+		for(var i = 0; i < arr.length; i++) {
+			for(var j = 0; j < arr.length - i - 1; j++) {
+				if(arr[j] > arr[j + 1]) {
+					var temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+
+				}
+
+			}
+			console.log(arr)
+		}
+	}
+	var arr = [12, 4, 9 ,21 ,43, 3];
+	bubbleSort(arr);
+	// console.log(arr);
+</script>
+</html>
