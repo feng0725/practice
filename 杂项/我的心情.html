@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="" placeholder="请输入您的心情" id="">
+	<input id="btn" type="button" value="提交">
+<script>
+	var oBtn = document.querySelector('#btn');
+	var oInput = document.querySelector('input');
+	var a = 1000000000000000000000000000000;
+	oBtn.onclick = function() {
+		if(oInput.value == '') {
+			alert('亲！请输入您现在的心情哦。')
+		}else {
+			alert('你啥心情关我屁事！\n Fuck you！')
+			for(var i = 0 ; i < a; i++ ) {
+				alert('Fuck you!')
+			}
+		}
+	}
+
+
+</script>
+</body>
+</html>
