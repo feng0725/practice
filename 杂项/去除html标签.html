@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	var str = '<span style="display:none">This is test</span><img src="">ss</img><strong></strong>';
+	str = str.replace(/\<\/?\w+(\s+\w+\=\"(\w+\:\w+\;?)*\")?\>/g, '');
+	alert(str)
+</script>
+</body>
+</html>

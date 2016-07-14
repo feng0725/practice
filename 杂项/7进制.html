@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	function show7(num) {
+		if((num / 7) < 1) {
+			return num % 7 ;
+		}else  {
+			var a = Math.floor(num / 7) 
+			return show7(a) +''+ show7(num%7)
+		}	
+	}
+	// show7
+	alert(show7(20))
+</script>
+</body>
+</html>

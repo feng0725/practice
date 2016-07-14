@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	for(var i = 1; i < 10; i++) {
+		for(var j = 1; j <= i; j++) {
+			var  str = i + '*' + j + '=';
+			var cur = i * j;
+			document.write(str + cur + (' '))
+		}
+		document.write('<br>')
+	}
+	document.write('<br>')
+	for(var i = 1; i < 10; i++) {
+		for(var j = i; j < 10; j++) {
+			var  str = i + '*' + j + '=';
+			var cur = i * j;
+			document.write(str + cur + (' '))
+		}
+		document.write('<br>')
+	}
+</script>
+</body>
+</html>
