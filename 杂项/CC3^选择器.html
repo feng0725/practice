@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width:100px;
+			height:100px;
+			margin:10px;
+			float:left;
+		}
+		div[id^="dd"] {
+			background:red;
+			margin:10px;
+		}
+		div[id*="4"] {
+			background:blue;
+		}
+		div[id$="dd"] {
+			background:yellow;
+		}
+		#dd1 + div {
+			background:#ccc;
+		}
+		#ddd ~ #a4dd {
+			background:#000;
+		}
+	</style>
+</head>
+<body>
+	<div id="dd1"></div>
+	<div id="dd2"></div>
+	<div id="dd3"></div>
+	<div id="dd4"></div>
+	<div id="a143" ></div>
+	<div id="4dd" ></div>
+	<div id="ddd" ></div>
+	<div id="a4dd" ></div>
+</body>
+</html>
