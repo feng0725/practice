@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function n1(){
+  //               var m1=function(){
+  //                   alert(5)
+  //               }
+  //           }
+  //           var n1=(function(){
+  //               return {
+  //                   name:function m1(){
+  //                       alert(3)
+  //                   },
+  //                   id:1
+  //               }
+  //           })();
+  //           n1.prototype.m1=function(){
+  //               alert(4)
+  //           };
+  //           m1();
+  //           n1.m1();
+  //           alert(n1().name())
+    	function n1() {
+    		var m1 = function() {
+    			alert(5);
+    		}
+    	}
+    	console.log(n1)
+    	var n1= (function() {
+    		return {
+    			name:function m1() {
+    				alert(3);
+    			},
+    			id:1
+    		}
+    	})();
+    	console.log(n1)
+    	n1.prototype.m1 = function() {
+    		alert(4);
+    	}
+    	console.log(n1)
+    	m1();
+    	n1.m1();
+    	alert(n1().name())
+	</script>
+</body>
+</html>

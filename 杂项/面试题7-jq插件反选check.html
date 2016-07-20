@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div>
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+	</div>
+	<input type="button" id="allcheck" value="全选">
+	<input type="button" id="invertcheck" value="反选">
+
+<script src="js/jquery-3.1.0.min.js"></script>
+<script>
+	$.fn.allCheck = function(ele) {
+		$(this).click(function() {
+			ele.prop('checked',true);
+		})
+	}
+	$.fn.invertCheck = function(ele) {
+		$(this).click(function() {
+			ele.each(function() {
+				if($(this).prop('checked')) {
+					$(this).prop('checked',false)
+				}else {
+					$(this).prop('checked',true);
+				}
+			})
+		})
+	}
+	$(document).ready(function() {
+		$('#allcheck').allCheck($('div>input'));
+		$('#invertcheck').invertCheck($('div>input'));
+
+	})
+</script>
+</body>
+</html>
