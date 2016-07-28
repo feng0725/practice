@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1,
+	maximun-scale=1, user-scalable=no">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style>
+		.skyblue {
+			background:skyblue;
+		}
+		.row div[class^="col"] {
+			border:1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 基本实例 -->
+	<table class="table">
+		<tr>
+		  <th>Month</th>
+		  <th>Savings</th>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+	</table>
+
+	<!-- 条纹状表格 -->
+	<table class="table table-striped">
+		<tr>
+		  <th>Month</th>
+		  <th>Savings</th>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 带边框的表格 -->
+	<table class="table table-bordered">
+		<tr>
+		  <th>Month</th>
+		  <th>Savings</th>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 鼠标悬停 -->
+	<table class="table table-hover">
+		<tr>
+		  <th>Month</th>
+		  <th>Savings</th>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 紧缩表格 -->
+	<table class="table table-condensed">
+		<tr>
+		  <th>Month</th>
+		  <th>Savings</th>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+		<tr>
+		  <td>January</td>
+		  <td>$100</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 状态类 -->
+	<!-- 不明真相出不来效果 -->
+	<table class="table ">
+		<!-- On rows -->
+		<tr class="active">
+			<td>11</td>
+		</tr>
+		<tr class="success">
+			<td>11</td>
+		</tr>
+		<tr class="warning">
+			<td>11</td>
+		</tr>
+		<tr class="danger">
+			<td>11</td>
+		</tr>
+		<tr class="info">
+			<td>11</td>
+		</tr>
+
+		<!-- On cells (`td` or `th`) -->
+		<tr>
+		  <td class="active">11111</td>
+		  <td class="success">11111</td>
+		  <td class="warning">11111</td>
+		  <td class="danger">11111</td>
+		  <td class="info">11111</td>
+		</tr>
+	</table>
+	<br>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

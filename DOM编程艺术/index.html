@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM编程艺术</title>
+	<style>
+		body {
+			font-family: "Helvetica", "Arial", serif;
+			color:#333;
+			background-color:#ccc;
+			margin: 1em 10%;
+		}
+
+		h1 {
+			color:#333;
+			background-color:transparent;
+		}
+
+		a {
+			color:#c60;
+			background-color: transparent;
+			font-weight:bold;
+			text-decoration:none;
+		}
+
+		ul {
+			padding:0;
+		}
+
+		li {
+			float:left;
+			padding:1em;
+			list-style:none;
+		}
+
+		img {
+			display:block;
+			clear:both;
+			width:600px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul>
+		<li>
+			<a href="img/1.gif" title="taylor">taylor Swift</a>
+		</li>
+		<li>
+			<a href="img/2.png" title="cute girl">cute girl</a>
+		</li>
+		<li>
+			<a href="img/doge.jpg" title="doge">doge</a>
+		</li>
+		<li>
+			<a href="img/佐野雏子.jpg" title="Sano Hinako">Sano Hinako</a>
+		</li>
+	</ul>
+	<img id="placeholder" src="img/佐野雏子.jpg" alt="my little girl" >
+	<p id="description" >Choose an image.</p>
+<script>
+	;(function() {
+		function showPic(whichpic) {
+			var source = whichpic.getAttribute('href');
+			var placeholder = document.getElementById('placeholder');
+			var description = document.getElementById('description');
+			var text = whichpic.getAttribute('title');
+
+			placeholder.setAttribute('src', source);
+			description.firstChild.nodeValue = text;
+		}
+
+		var aA = document.getElementsByTagName('a');
+
+		for(var i = 0; i < aA.length; i++) {
+			aA[i].onclick = function() {
+				showPic(this);
+				return false;
+			}
+		}
+
+
+	})();
+</script>
+</body>
+</html>

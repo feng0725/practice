@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	var n = 0;
+	for(let i = 1; i < 10; i++) {
+		for(let j = 1; j <= i; j++) {
+			let  str = i + '*' + j + '=';
+			let cur = i * j;
+			n++;
+			// document.write(str + cur + (' '))
+			setTimeout(function() {
+				document.write(str + cur + (' '))
+			},n*200)
+		}
+		setTimeout(function() {
+			document.write('<br><br>')
+			if(i === 9) {
+				document.write('<br><br>')
+			}
+		},n*200)
+	}
+
+
+
+	for(let i = 1; i < 10; i++) {
+		for(let j = i; j < 10; j++) {
+			let  str = i + '*' + j + '=';
+			let cur = i * j;
+			n++
+			setTimeout(function() {
+				document.write(str + cur + (' '))
+			},n*200)
+		}
+		setTimeout(function() {
+			document.write('<br><br>')
+		},n*200)
+		
+	}
+</script>
+</body>
+</html>

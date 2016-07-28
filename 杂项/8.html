@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span style="display:none">This is test</span><img src="">ss</img><strong></strong>
+<script>
+	var str = '<span style="display:none">This is test</span><img src="">ss</img><strong></strong>';
+	var a = str.match(/\>(\w+(\s+)?)+\</g);
+	a = a.join(' ');
+	a = a.replace(/\>|\</g, '');
+	alert(a)
+
+
+</script>
+</body>
+</html>

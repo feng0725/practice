@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var obj = {
+			data: 'aaa',
+			getObj: function() {
+				console.log(this.data);
+			},
+			setObj: function(str) {
+				this.data = str
+			}
+		}
+		obj.getObj();
+		obj.setObj('bbb');
+		obj.getObj();
+	</script>
+</body>
+</html>
