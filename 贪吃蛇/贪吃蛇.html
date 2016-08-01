@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+		body {
+			background:#ccc;
+		}
+		#box {
+			width:500px;
+			height:500px;
+			border:1px solid #000;
+			margin:0 auto;
+			position:relative;
+		}
+		#snk div {
+			width:10px;
+			height:10px;
+			background:#000;
+			position:absolute;
+		}
+		#snk #head {
+			/*border-radius:40%;*/	
+			background:red;
+			text-align:center;
+			line-height: 10px;
+			color:#fff;
+			font-size:10px;
+		}
+		#peas {
+			width:10px;
+			height:10px;
+			background:#f90;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="snk">
+			<div id="head">·</div>
+			<div class="tail"></div>
+			<div class="tail"></div>
+			<div class="tail"></div>
+
+		</div>
+	</div>
+
+<script>
+	var oBox = document.querySelector('#box');
+	var oSnk = document.querySelector('#snk');
+	var oHead = document.querySelector('#head');
+	var aSnk = oSnk.children;
+	var bRight,
+		bLeft,
+		bUp,
+		bDown;
+	bRight = true;
+	var length = oSnk.children.length
+	// 蛇尾数组
+	var arr = [
+		{
+			left:100,
+			top:50
+		},
+		{
+			left:90,
+			top:50
+		},
+		{
+			left:80,
+			top:50,
+		},
+		{
+			left:70,
+			top:50
+		}
+	];
+
+
+
+	for(var i = 0; i < arr.length; i++) {
+		if(!aSnk[i]) {
+			continue;
+		}
+		aSnk[i].style.left = arr[i].left + 'px';
+		aSnk[i].style.top = arr[i].top + 'px';
+	}
+
+	function tailRun() {
+		arr.unshift({
+			left:oHead.offsetLeft,
+			top:oHead.offsetTop
+		});
+
+		arr.length = length + 1;
+		for(var i = 0; i < arr.length; i++) {
+			if(!aSnk[i]) {
+				continue;
+			}
+			aSnk[i].style.left = arr[i].left + 'px';
+			aSnk[i].style.top = arr[i].top + 'px';
+		}
+		
+	}
+	function rnd(m,n) {
+		return Math.floor(Math.random() * (m - n) + n)
+	}
+	function rndPeas() {
+		var oPeas = document.createElement('div');
+		oPeas.id = 'peas'
+		var x =  rnd(0, oBox.offsetWidth)
+		var y = rnd(0,oBox.offsetHeight)
+		x -= x % 10;
+		y -= y % 10;
+		console.log(x,y)
+		oPeas.style.left = x + 'px';
+		oPeas.style.top = y + 'px';
+		oBox.appendChild(oPeas);
+	}
+	rndPeas()
+	
+
+	function run() {
+		var x = oHead.offsetLeft;
+		var y = oHead.offsetTop;
+		if(bLeft) {
+			x -= 10;
+		}
+		if(bUp) {
+			y -= 10;
+		}
+		if(bRight) {
+			x += 10;
+		}
+		if(bDown) {
+			y += 10;
+		}
+
+		oHead.style.left = x+'px';
+		oHead.style.top = y+'px';
+		tailRun() 
+	}
+
+
+
+	document.onkeydown = function(ev) {
+		function re() {
+			bRight = false;
+			bLeft = false;
+			bUp = false;
+			bDown = false;
+		}
+
+		switch (ev.keyCode) {
+			case 37:
+				re()
+				bLeft = true;
+				break;
+			case 38:
+				re()
+				bUp = true;
+				break;
+			case 39:
+				re()
+				bRight = true;
+				break;
+			case 40:
+				re()
+				bDown = true;
+				break;
+		}
+	}
+
+	var timer = setInterval(function() {
+		run();
+	},300)
+</script>
+</body>
+</html>
