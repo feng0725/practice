@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="confirm">
+	<input type="button" value="prompt">
+<script>
+	var aBtn = document.querySelectorAll('input');
+	aBtn[0].onclick = function() {
+		if(confirm('Are you sure?')) {
+			alert('yes')
+		}else {
+			alert('no')
+		}
+	}
+	aBtn[1].onclick = function() {
+		var result = prompt('What is you name?', '');
+		if(result !== null) {
+			alert('Welcome ' + result)
+		}
+	}
+</script>
+</body>
+</html>

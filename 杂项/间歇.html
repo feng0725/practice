@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	var num = 0;
+	var max = 10;
+
+	function foo() {
+		num++;
+
+		if(num < max) {
+			setTimeout(foo, 500);
+		}else {
+			alert('Done');
+		}
+		console.log(num)
+	}
+
+	setTimeout(foo, 500);
+</script>
+</body>
+</html>
