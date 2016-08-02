@@ -34,6 +34,15 @@
 			background:#f90;
 			position:absolute;
 		}
+		.con {
+			width:500px;
+			text-align:center;
+			margin:20px auto;
+		}
+		#res {
+			display: block;
+			margin:0 auto;
+		}
 	</style>
 </head>
 <body>
@@ -46,18 +55,21 @@
 
 		</div>
 	</div>
-
+	<div class="con">小键盘←↑↓→</div>
+	<!-- <input id="res" type="button" value="再来一局"> -->
 <script>
 	var oBox = document.querySelector('#box');
 	var oSnk = document.querySelector('#snk');
 	var oHead = document.querySelector('#head');
+	var oRes = document.querySelector('#res');
 	var aSnk = oSnk.children;
 	var bRight,
 		bLeft,
 		bUp,
 		bDown;
 	bRight = true;
-	var length = oSnk.children.length
+	var oPeas = null;
+	
 	// 蛇尾数组
 	var arr = [
 		{
@@ -89,6 +101,8 @@
 	}
 
 	function tailRun() {
+		var length = oSnk.children.length
+
 		arr.unshift({
 			left:oHead.offsetLeft,
 			top:oHead.offsetTop
@@ -107,14 +121,23 @@
 	function rnd(m,n) {
 		return Math.floor(Math.random() * (m - n) + n)
 	}
+
+	function creatTail() {
+		var oDiv = document.createElement('div');
+		oDiv.className = 'tail';
+		oSnk.appendChild(oDiv);
+	}
+
 	function rndPeas() {
-		var oPeas = document.createElement('div');
+		if(oPeas) {
+			oPeas.parentNode.removeChild(oPeas);
+		}
+		oPeas = document.createElement('div');
 		oPeas.id = 'peas'
-		var x =  rnd(0, oBox.offsetWidth)
-		var y = rnd(0,oBox.offsetHeight)
+		var x =  rnd(0, oBox.offsetWidth+1)
+		var y = rnd(0,oBox.offsetHeight+1)
 		x -= x % 10;
 		y -= y % 10;
-		console.log(x,y)
 		oPeas.style.left = x + 'px';
 		oPeas.style.top = y + 'px';
 		oBox.appendChild(oPeas);
@@ -125,6 +148,9 @@
 	function run() {
 		var x = oHead.offsetLeft;
 		var y = oHead.offsetTop;
+		var pX = oPeas.offsetLeft;
+		var pY = oPeas.offsetTop;
+		// 方向判定
 		if(bLeft) {
 			x -= 10;
 		}
@@ -137,6 +163,25 @@
 		if(bDown) {
 			y += 10;
 		}
+
+		// 吃豆判定
+		if( x === pX && y === pY) {
+			creatTail();
+			rndPeas();
+
+		}
+
+		// 死亡判定
+		for(var i = 0; i < arr.length-1; i++) {
+			if( x === arr[i].left && y === arr[i].top || (x < 0 || x > oBox.offsetWidth - oHead.offsetWidth || y < 0 || y > oBox.offsetHeight - oHead.offsetHeight)) {
+				alert('game over')
+				clearInterval(timer);
+				return;
+			}
+
+		}
+
+	
 
 		oHead.style.left = x+'px';
 		oHead.style.top = y+'px';
@@ -152,21 +197,24 @@
 			bUp = false;
 			bDown = false;
 		}
-
 		switch (ev.keyCode) {
 			case 37:
+				if(bRight) return;
 				re()
 				bLeft = true;
 				break;
 			case 38:
+				if(bDown) return;
 				re()
 				bUp = true;
 				break;
 			case 39:
+				if(bLeft) return;
 				re()
 				bRight = true;
 				break;
 			case 40:
+				if(bUp) return;
 				re()
 				bDown = true;
 				break;
@@ -175,7 +223,7 @@
 
 	var timer = setInterval(function() {
 		run();
-	},300)
+	},200)
 </script>
 </body>
 </html>
