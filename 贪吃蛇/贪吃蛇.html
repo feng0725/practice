@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>贪吃蛇</title>
 	<style>
+		li {
+			list-style:none;
+		}
 		body {
 			background:#ccc;
 		}
@@ -43,6 +46,11 @@
 			display: block;
 			margin:0 auto;
 		}
+		.list {
+			position:absolute;
+			right:-100px;
+			top:100px;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +62,24 @@
 			<div class="tail"></div>
 
 		</div>
+		<div class="list">
+			<ul>
+				<li id="score">分数：0分</li>
+				<li >
+					<div>速度:<span id="level">1</span></div>
+					<input id="reduce" type="button" value="←">
+					<input id="plus" type="button" value="→">
+				</li>
+				<li >
+					<input id="start" type="button" value="开始">
+				</li>
+				<li>
+					<input id="pause" type="button" value="暂停">
+				</li>
+			</ul>
+		</div>
 	</div>
+	
 	<div class="con">小键盘←↑↓→</div>
 	<!-- <input id="res" type="button" value="再来一局"> -->
 <script>
@@ -62,7 +87,16 @@
 	var oSnk = document.querySelector('#snk');
 	var oHead = document.querySelector('#head');
 	var oRes = document.querySelector('#res');
+	var oScore = document.querySelector('#score');
+	var oReduce = document.querySelector('#reduce');
+	var oPlus = document.querySelector('#plus');
+	var oLevel = document.querySelector('#level');
+	var oStart = document.querySelector('#start');
+	var oPause = document.querySelector('#pause');
 	var aSnk = oSnk.children;
+	var iNum = 0;
+	var level = 1;
+	var timer = null;
 	var bRight,
 		bLeft,
 		bUp,
@@ -90,7 +124,38 @@
 		}
 	];
 
+	// 开始游戏
+	oStart.onclick = function() {
+		oPlus.disabled = true;
+		oReduce.disabled = true;
+		timer = setInterval(function() {
+			run();
+		},200-level*20)
+	}
 
+	// 暂停游戏
+	oPause.onclick = function() {
+		oPlus.disabled = false;
+		oReduce.disabled = false;
+		if(timer){
+			clearInterval(timer)
+		}
+		
+	}
+
+	// 调整等级
+	oReduce.onclick = function() {
+		level--;
+		if(level <=0) level=1;
+		oLevel.innerHTML = level
+
+	}
+	oPlus.onclick = function() {
+		level++
+		if(level >=9) level=9;
+		oLevel.innerHTML = level
+
+	}
 
 	for(var i = 0; i < arr.length; i++) {
 		if(!aSnk[i]) {
@@ -168,6 +233,9 @@
 		if( x === pX && y === pY) {
 			creatTail();
 			rndPeas();
+			iNum++
+			oScore.innerHTML = '分数：'+iNum+'分'
+
 
 		}
 
@@ -221,9 +289,7 @@
 		}
 	}
 
-	var timer = setInterval(function() {
-		run();
-	},200)
+	
 </script>
 </body>
 </html>
