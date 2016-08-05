@@ -1,6 +1,7 @@
 html,
 body,
 header,
+img,
 ul {
 	margin:0;
 	padding:0;
@@ -36,9 +37,11 @@ a {
 	font-family: 'Microsoft YaHei';
 
 }
+
 a:hover {
 	text-decoration:none;
 }
 body {
 	font-family: 'Microsoft YaHei';
+	transition: .5s all ease;
 }
