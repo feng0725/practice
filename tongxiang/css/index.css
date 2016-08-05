@@ -1,0 +1,129 @@
+.head-top {
+	height:38px;
+	background:#f6f6f6;
+}
+.head-top h5 {
+	line-height:38px;
+	margin-left:20px;
+	color:#3d9e37;
+	font-size:14px;
+}
+
+.logo  {
+	padding-top: 5px;
+	height:132px;
+}
+.logo a {
+	
+	width:291px;
+	height:100%;
+	margin-left:2px;
+}
+.logo img {
+	margin-right:35px;
+}
+.tx-title {
+	border-top:1px solid #dbdbdb;
+}
+
+.tx-title ul {
+	height:76px;
+}
+.tx-title ul li {
+	float:left;
+	margin: 25px 0% 31px 4.3%;
+	padding-right: 4.3%;
+	position:relative;
+}
+.tx-title ul .first {
+	margin-left: 0;
+}
+.tx-title ul li a {
+	font-size:16px;
+}
+.tx-title ul .last {
+	margin-right: 2.5%;
+}
+.tx-title ul a.active {
+	color:#3d9853;
+}
+.tx-title ul span {
+	/*border-right:1px solid #000;*/
+	position:absolute;
+	right: 0;
+	top:2px;
+	color:#ccc;
+}
+a:hover {
+	color:#3d9853;
+}
+.banner {
+	height:460px;
+	background:url(../img/banner.jpg) no-repeat center;
+	margin-bottom:20px;
+	/*background-size:100%;*/
+}
+section.item {
+	box-sizing: border-box;
+	position:relative;
+}
+.item img {
+	display:block;
+	margin:0px auto;
+}
+.item div.left {
+	position:absolute;
+	border-top:2px solid #09802c;
+	width:43%;
+	height:10px;
+	left:0;
+	top:40px;
+}
+.item div.right {
+	position:absolute;
+	border-top:2px solid #09802c;
+	width:43%;
+	height:10px;
+	right:0;
+	top:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 468px) {
+	.tx-title ul li {
+		margin: 25px 0% 31px 3%;
+		padding-right: 3%;
+
+	}
+}
+
+@media (min-width: 992px) {
+	.tx-title ul li {
+		margin: 25px 0% 31px 4%;
+		padding-right: 4%;
+
+	}
+}
+
+@media (min-width: 1200px) {
+	.tx-title ul li {
+		margin: 25px 0% 31px 4.67%;
+		padding-right: 4.67%;
+
+	}
+}
+
+
+

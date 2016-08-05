@@ -1,0 +1,44 @@
+html,
+body,
+header,
+ul {
+	margin:0;
+	padding:0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin:0;
+	padding:0;
+	font-weight: normal;
+}
+li {
+	list-style:none;
+}
+
+.fl {
+	float:left;
+}
+.fr {
+	float:right;
+}
+.clearfix:after {
+	display:block;
+	content:'';
+	clear:both;
+}
+.clearfix{zoom:1;}
+a {
+	color:#000;
+	font-family: 'Microsoft YaHei';
+
+}
+a:hover {
+	text-decoration:none;
+}
+body {
+	font-family: 'Microsoft YaHei';
+}
