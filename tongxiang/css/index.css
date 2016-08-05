@@ -237,7 +237,9 @@ div.hot {
 div.active {
 	display:block;
 }
-
+.produce {
+	margin-bottom:50px;
+}
 
 .produce li {
 	float:left;

@@ -37,11 +37,20 @@ a {
 	font-family: 'Microsoft YaHei';
 
 }
-
+a:link {
+	text-decoration:none;
+}
+a:visited {
+	text-decoration:none;
+}
 a:hover {
 	text-decoration:none;
 }
+a:active {
+	text-decoration:none;
+}
+
 body {
 	font-family: 'Microsoft YaHei';
-	transition: .5s all ease;
+
 }
