@@ -387,7 +387,7 @@
 					var getFictionInfo = function(callback) {
 						$.get('data/chapter.json', function(data) {
 							// todo 获得章节信息之后的回调
-							Chapter_id = data.chapters[0].chapter_id;
+							Chapter_id = data.chapters[1].chapter_id;
 							callback && callback();
 						}, 'json');
 					}
