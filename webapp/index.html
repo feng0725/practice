@@ -430,7 +430,8 @@
 								// todo 获得章节信息之后的回调
 								if(data.result ==0) {
 									Chapter_id = Util.StorageGetter('last_chapter_id');
-									if(Chapter_id == null) {						
+									console.log(Chapter_id)					
+									if(Chapter_id == null) {	
 										Chapter_id = data.chapters[1].chapter_id;
 									}
 									ChapterTotal = data.chapters.length;
