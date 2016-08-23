@@ -173,6 +173,7 @@
 				height: 135px;
 				width: 100%;
 				color: #fff;
+				z-index: 10000;
 			}
 			.nav-pannel-bk {
 				width: 100%;
@@ -224,7 +225,7 @@
 			}
 			.artical-action-mid {
 				position: fixed;
-				z-index: 10000;
+				z-index: 9999;
 				width: 100%;
 				height: 40%;
 				top: 30%;
@@ -362,14 +363,14 @@
 				
 				function init () {
 					if(BGCN) {
-						RootContainer.css('background-color',BGCN)	
-						$('#night_icon').css('display', 'block');
-						$('#day_icon').css('display', 'none');
-						Dom.$bk_container.last().show();				
-					}else if(BGC) {
+						$('body').css('background-color',BGCN)	
 						$('#night_icon').css('display', 'none');
 						$('#day_icon').css('display', 'block');
-						RootContainer.css('background-color',BGC)
+						Dom.$bk_container.last().show();				
+					}else if(BGC) {
+						$('#night_icon').css('display', 'block');
+						$('#day_icon').css('display', 'none');
+						$('body').css('background-color',BGC)
 						Dom.$bk_container.last().hide();	
 					}
 					
@@ -545,19 +546,19 @@
 
 					$('#night_button').click(function() {
 						// todo 触发背景切换的事件
-						if($('#night_icon').css('display') == 'none'){
-							$('#night_icon').css('display', 'block');
-							$('#day_icon').css('display', 'none');
+						if($('#day_icon').css('display') == 'none'){
+							$('#night_icon').css('display', 'none');
+							$('#day_icon').css('display', 'block');
 
 							Dom.$bk_container.last().show();
-							RootContainer.css('background-color', Dom.$bk_container.last().attr('data-color'));
+							$('body').css('background-color', Dom.$bk_container.last().attr('data-color'));
 							Util.StorageSetter('night', Dom.$bk_container.last().attr('data-color'));
 							Dom.$bk_container.last().addClass('bk-container-current').siblings().removeClass('bk-container-current');
 
 						}else {
-							$('#night_icon').css('display', 'none');
-							$('#day_icon').css('display', 'block');
-							RootContainer.css('background-color', BGC)
+							$('#night_icon').css('display', 'block');
+							$('#day_icon').css('display', 'none');
+							$('body').css('background-color', BGC)
 							Dom.$bk_container.last().hide();
 							Util.StorageRemter('night')
 							if(LastBG != null) {
@@ -613,12 +614,14 @@
 				}
 
 				function TextBg(obj) {
-					RootContainer.css('background-color',obj.attr('data-color'));
+					$('body').css('background-color',obj.attr('data-color'));
 					console.log(obj)
 					obj.addClass('bk-container-current').siblings().removeClass('bk-container-current')
 					Util.StorageSetter('background-color',obj.attr('data-color'));
 					BGC = Util.StorageGetter('background-color');
 					Util.StorageRemter('night')
+					$('#night_icon').css('display', 'block');
+					$('#day_icon').css('display', 'none');
 				
 				}
 
